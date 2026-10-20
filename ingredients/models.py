@@ -1,6 +1,6 @@
 from decimal import Decimal
 
-from django.core.validators import MinValueValidator
+from django.core.validators import MinValueValidator, MinLengthValidator
 from django.db import models
 
 
@@ -20,8 +20,8 @@ class Ingredient(models.Model):
         OTHER = 'Other', 'Other'
 
 
-    ingredient_name = models.CharField(max_length=120)
-    grams = models.IntegerField()
+    ingredient_name = models.CharField(max_length=60, validators=[MinLengthValidator(3)])
+    grams = models.IntegerField(validators=[MinValueValidator(1)])
 
     calories_per_100gr = models.DecimalField(
         max_digits=6,
@@ -47,7 +47,7 @@ class Ingredient(models.Model):
         validators=[MinValueValidator(Decimal('0.1'))]
     )
 
-    category = models.CharField(max_length=120, choices=CategoryChoices.choices)
+    category = models.CharField(max_length=120, choices=CategoryChoices.choices, default=CategoryChoices.OTHER)
     is_vegan = models.BooleanField(default=False)
     is_gluten_free = models.BooleanField(default=False)
 

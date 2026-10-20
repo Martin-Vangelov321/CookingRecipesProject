@@ -4,10 +4,11 @@ from django.utils.text import slugify
 
 class Recipe(models.Model):
     recipe_name = models.CharField(max_length=50)
+    dish_photo = models.URLField()
     instructions = models.TextField()
     prepare_time_in_minutes = models.PositiveIntegerField()
     servings = models.PositiveIntegerField(default=1)
-    chef = models.ForeignKey('chefs.Chef', on_delete=models.CASCADE)
+    chef = models.ForeignKey('chefs.Chef', on_delete=models.SET_NULL, null=True)
     recipe_ingredients = models.ManyToManyField(to='ingredients.Ingredient')
     created_at = models.DateTimeField(auto_now_add=True)
     updated_at = models.DateTimeField(auto_now=True)

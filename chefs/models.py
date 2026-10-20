@@ -1,5 +1,6 @@
 from datetime import date
 
+from django.core.validators import MinLengthValidator
 from django.db import models
 from django.utils.text import slugify
 
@@ -16,8 +17,8 @@ class Chef(models.Model):
         FRANCE = 'FRANCE', 'France'
         GERMANY = 'GERMANY', 'Germany'
 
-    first_name = models.CharField(max_length=30)
-    last_name = models.CharField(max_length=30)
+    first_name = models.CharField(max_length=30, validators=[MinLengthValidator(2)])
+    last_name = models.CharField(max_length=30, validators=[MinLengthValidator(2)])
     country = models.CharField(max_length=30, choices=ChefCountryChoices.choices)
     bio = models.TextField(max_length=600, null=True, blank=True)
     birth_year = models.PositiveIntegerField()
