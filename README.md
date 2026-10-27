@@ -6,9 +6,9 @@
    - `cd (project folder name)`
    - `python -m venv venv`
    - `venv\Scripts\activate` (Windows) or `source venv/bin/activate` (Mac/Linux)
-3. **PyCharm Virtual Environment & Interpreter Setup (Optional/Troubleshooting):**
+3. PyCharm Virtual Environment & Interpreter Setup (Optional/Troubleshooting):
    - `If you open the project in PyCharm and see a "Invalid Python Interpreter" warning, configure it manually:`
-   - `Click on the settings gear icon (or go to File -> Settings -> Python Interpreter).`
+   - `Click on configure python interpreter (or go to File -> Settings -> Python Interpreter).`
    - `Select Add New -> Select existing.`
    - `Browse to your project folder and select the Python executable inside your virtual environment: `venv\Scripts\python.exe` (Windows) or `venv/bin/python` (Mac/Linux).`
 4. Install dependencies: `pip install -r requirements.txt`
