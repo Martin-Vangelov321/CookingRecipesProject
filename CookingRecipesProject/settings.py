@@ -82,14 +82,22 @@ WSGI_APPLICATION = 'CookingRecipesProject.wsgi.application'
 
 DATABASES = {
     "default": {
-        "ENGINE": "django.db.backends.postgresql",
-        "NAME": "ExamDjango",
-        "USER": "postgres",
-        "PASSWORD": "postgres",
-        "HOST": "127.0.0.1",
-        "PORT": "5432",
+        "ENGINE": "django.db.backends.sqlite3",
+        "NAME": "mydatabase",
     }
 }
+
+#POST GRESS DATA BASE
+#DATABASES = {
+    #"default": {
+    #    "ENGINE": "django.db.backends.postgresql",
+    #   "NAME": "",
+    #    "USER": "",
+    #    "PASSWORD": "",
+    #    "HOST": "127.0.0.1",
+    #    "PORT": "5432",
+    #}
+#}
 
 
 # Password validation
