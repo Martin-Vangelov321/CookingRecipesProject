@@ -11,7 +11,6 @@ class ChefBaseForm(forms.ModelForm):
         model = Chef
         exclude = ['slug', 'created_at']
 
-
         labels = {
             'first_name': 'Chef first name',
             'last_name': 'Chef last name',
@@ -40,8 +39,6 @@ class ChefBaseForm(forms.ModelForm):
                 'max_length': 'Chef Last Name Must Be Smaller Than 30 characters',
                 'min_length': 'Chef Last Name Must Be Bigger Than 2 characters',
             },
-
-
         }
 
 

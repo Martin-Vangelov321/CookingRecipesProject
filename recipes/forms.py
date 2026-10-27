@@ -19,6 +19,11 @@ class RecipeBaseForm(forms.ModelForm):
 
         }
 
+        help_texts = {
+            'chef': 'If you dont have option you must create one',
+            'recipe_ingredients': 'If you dont have option you must create one',
+        }
+
         error_messages = {
             'recipe_name': {
                 'required': 'Recipe Name cannot be empty',
@@ -53,3 +58,54 @@ class RecipeUpdateForm(RecipeBaseForm):
 
 class RecipeDeleteForm(DisableFormMixin ,RecipeBaseForm):
     ...
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

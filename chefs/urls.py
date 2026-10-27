@@ -3,7 +3,7 @@ from django.urls import path, include
 from chefs.views import ChefsDetailsListView, ChefCreateView, chef_details_view, ChefUpdateView, chef_delete_view
 
 app_name = 'chefs'
-#todo add views
+
 urlpatterns = [
 
     path('list/', ChefsDetailsListView.as_view(), name='details'),
@@ -15,3 +15,65 @@ urlpatterns = [
         path('details/', chef_details_view, name='details-single'),
     ]))
 ]
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
