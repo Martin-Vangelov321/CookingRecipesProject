@@ -1,0 +1,26 @@
+<nav class="main-navigation">
+    <div class="nav-brand">
+        <a href="{% url 'common:home' %}">
+            <i class="fa-solid fa-utensils"></i> Cooking Recipes
+        </a>
+    </div>
+
+    <div class="nav-links">
+
+        <a href="{% url 'common:home' %}">
+            <i class="fa-solid fa-house"></i> Home
+        </a>
+
+        <a href="{% url 'recipes:details' %}">
+            <i class="fa-solid fa-book-open"></i> Recipes
+        </a>
+
+        <a href="{% url 'ingredients:details' %}">
+            <i class="fa-solid fa-basket-shopping"></i> Ingredients
+        </a>
+
+        <a href="{% url 'chefs:details' %}">
+            <i class="fa-solid fa-user-tie"></i> Chefs
+        </a>
+    </div>
+</nav>

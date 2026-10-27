@@ -1,0 +1,52 @@
+{% extends 'shared/base.html' %}
+{% load static %}
+
+{% block content %}
+
+    <div class="page-header">
+        <h2 class="page-title">All Chefs Management</h2>
+
+        <div class="header-controls">
+            <form class="search-form" method="get" action="">
+                <input
+                        type="text"
+                        name="q"
+                        class="search-input"
+                        placeholder="Search chef..."
+                        value="{{ request.GET.q|default:'' }}"
+                    >
+                    <button type="submit" class="search-btn">
+                        <i class="fa-solid fa-magnifying-glass"></i>
+                    </button>
+            </form>
+
+            <a href="{% url 'chefs:add' %}" class="btn btn-add-main">
+                <i class="fa-solid fa-plus"></i> Add New Chef
+            </a>
+        </div>
+    </div>
+
+    <div class="chef-card-container">
+        {% for chef in chefs %}
+             <div class="chef-full-card">
+                <div class="chef-info">
+                    <h3>{{ chef.full_name }}</h3>
+                    <p class="chef-specialty"><i class="fa-solid fa-utensils"></i> Specialty: {{ chef.specialty }}</p>
+                </div>
+                <div class="chef-actions-details    ">
+                    <a href="{% url 'chefs:details-single' chef.slug %}" class="btn btn-details"><i class="fa-solid fa-eye"></i> Details</a>
+                </div>
+             </div>
+        {% empty %}
+            <div class="empty-chef">
+                <h1>
+                   No Added Chefs Yet
+                </h1>
+            </div>
+
+        {% endfor %}
+    </div>
+
+    {% include 'shared/paginator.html' %}
+
+{% endblock %}

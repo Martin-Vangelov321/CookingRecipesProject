@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en">
+{% load static %}
+<head>
+    <meta charset="UTF-8">
+    <title>404 - Page Not Found</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="stylesheet" href="{% static 'css/404page.css' %}">
+</head>
+<body>
+    <main>
+        <div class="error-container">
+            <div class="error-card">
+                <h1 class="error-code">404</h1>
+                <h2 class="error-title">Page Not Found</h2>
+                <p class="error-text">
+                    There is nothing to eat here. Go somewhere else.
+                </p>
+                <a href="{% url 'common:home' %}" class="error-btn">
+                    <i class="fa-solid fa-house"></i> Home Page
+                </a>
+            </div>
+        </div>
+    </main>
+</body>
+</html>

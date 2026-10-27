@@ -1,0 +1,26 @@
+{% extends 'shared/base.html' %}
+{% load static %}
+
+{% block content %}
+
+    <div class="chefs-full-list">
+
+        <div class="page-header chef-header">
+            <h1 class="page-title">Update Ingredient</h1>
+        </div>
+
+        <div class="form-card-container">
+            <form method="post" novalidate>
+                {% csrf_token %}
+                {{ form.as_p }}
+
+
+                <div class="chef-actions" style="display: flex; gap: 1rem; justify-content: flex-end; margin-top: 2rem; border-top: 1px solid #334155; padding-top: 1.5rem;">
+                    <button class="btn btn-update" type="submit" style="flex: 1;">Update Ingredient</button>
+                    <a class="btn btn-delete" href="{% url 'ingredients:details' %}" style="flex: 1; text-align: center; text-decoration: none;">Cancel</a>
+                </div>
+            </form>
+        </div>
+    </div>
+
+{% endblock %}}

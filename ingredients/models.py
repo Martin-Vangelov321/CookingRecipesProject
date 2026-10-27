@@ -50,6 +50,7 @@ class Ingredient(models.Model):
     category = models.CharField(max_length=120, choices=CategoryChoices.choices, default=CategoryChoices.OTHER)
     is_vegan = models.BooleanField(default=False)
     is_gluten_free = models.BooleanField(default=False)
+    created_at = models.DateTimeField(auto_now_add=True)
 
     @property
     def total_protein(self):

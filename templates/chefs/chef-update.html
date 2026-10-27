@@ -1,0 +1,24 @@
+{% extends 'shared/base.html' %}
+{% load static %}
+
+{% block content %}
+<div class="main-content">
+    <div class="page-header">
+        <h1 class="page-title">Chef Form</h1>
+    </div>
+
+    <div class="chefs-full-list">
+        <div class="form-card-container">
+            <form method="post">
+                {% csrf_token %}
+                {{ form.as_p }}
+
+                <div class="chef-actions" style="justify-content: flex-end; margin-top: 2rem;">
+                    <button class="btn btn-update" type="submit">Save Chef</button>
+                    <a class="btn btn-toggle-comments" href="{% url 'chefs:details-single' chef.slug %}">Cancel</a>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>
+{% endblock %}

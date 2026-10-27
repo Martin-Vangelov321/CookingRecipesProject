@@ -1,0 +1,602 @@
+/* Общи стилове за страницата */
+body {
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    background-color: #ffffff;
+    color: #1e293b;
+    margin: 0;
+    padding: 0;
+    display: flex;
+    flex-direction: column;
+    min-height: 100vh;
+    box-sizing: border-box;
+}
+
+/* --- Стил за съкратени инструкции --- */
+.recipe-instructions-text.clamped {
+    display: -webkit-box;
+    -webkit-line-clamp: 2; /* Показва само първите 2 реда */
+    -webkit-box-orient: vertical;
+    overflow: hidden;
+    margin-bottom: 0.3rem;
+}
+
+.btn-read-more {
+    background: transparent;
+    border: none;
+    color: #e67e22;
+    font-size: 0.85rem;
+    font-weight: 600;
+    cursor: pointer;
+    padding: 0;
+    margin-bottom: 1rem;
+    display: inline-flex;
+    align-items: center;
+    gap: 4px;
+    transition: color 0.2s ease;
+}
+
+.btn-read-more:hover {
+    color: #d35400;
+    text-decoration: underline;
+}
+
+.btn-read-more i {
+    font-size: 0.75rem;
+    transition: transform 0.3s ease;
+}
+
+/* Ротация на стрелката при отворено състояние */
+.btn-read-more.expanded i {
+    transform: rotate(180deg);
+}
+
+
+
+/* Основно съдържание - центрирано с ограничена максимална ширина */
+.main-content {
+    flex: 1;
+    padding: 3rem 2rem;
+    width: 100%;
+    max-width: 900px; /* Намалена ширина, за да прибере всичко в средата */
+    margin: 0 auto;    /* Центрира целия контент на екрана */
+    box-sizing: border-box;
+}
+
+/* Заглавен блок */
+.page-header {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 1.5rem;
+    width: 73%;
+    margin: 3rem auto;
+}
+
+.page-title {
+    color: #1e293b;
+    font-size: 2.2rem;
+    margin: 0.2rem;
+    font-weight: 700;
+    text-align: center;
+
+}
+
+/* Лента под заглавието */
+.header-controls {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    width: 100%;
+    gap: 1.5rem;
+    flex-wrap: wrap;
+}
+
+/* Стил за разтеглената търсачка */
+.search-form {
+    display: flex;
+    align-items: center;
+    background-color: #1e293b;
+    border: 1px solid #334155;
+    border-radius: 8px;
+    overflow: hidden;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    transition: border-color 0.3s ease;
+    flex: 1;
+}
+
+.search-form:focus-within {
+    border-color: #e67e22;
+}
+
+.search-input {
+    background: transparent;
+    border: none;
+    padding: 0.7rem 1rem;
+    color: #f8fafc;
+    font-size: 0.95rem;
+    outline: none;
+    width: 100%;
+}
+
+.search-input::placeholder {
+    color: #64748b;
+}
+
+.search-btn {
+    background-color: transparent;
+    border: none;
+    color: #94a3b8;
+    padding: 0 1.2rem;
+    cursor: pointer;
+    font-size: 1rem;
+    transition: color 0.3s ease;
+}
+
+.search-btn:hover {
+    color: #e67e22;
+}
+
+/* Списък с рецепти */
+.recipes-full-list {
+    display: flex;
+    flex-direction: column;
+    gap: 2.5rem;
+    width: 73%;
+    margin: 4rem auto;
+}
+
+.recipe-cards {
+    background-color: #1e293b;
+    border: 1px solid #334155;
+    border-radius: 12px;
+    overflow: hidden;
+    box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.15);
+    display: flex;
+    flex-direction: row;
+    transition: transform 0.3s ease, border-color 0.3s ease;
+    width: 100%;
+}
+
+.recipe-cards:hover {
+    border-color: #e67e22;
+}
+
+.recipe-cards img {
+    width: 380px;
+    object-fit: cover;
+    object-position: center;
+    border-right: 1px solid #334155;
+}
+
+.recipe-details {
+    padding: 2rem;
+    display: flex;
+    flex-direction: column;
+    flex: 1;
+    justify-content: space-between;
+}
+
+.recipe-header-info h3 {
+    color: #f8fafc;
+    font-size: 1.5rem;
+    margin-top: 0;
+    margin-bottom: 0.5rem;
+}
+
+.recipe-chef {
+    color: #e67e22;
+    font-size: 0.95rem;
+    font-weight: 600;
+    margin-bottom: 1rem;
+    display: flex;
+    align-items: center;
+    gap: 6px;
+}
+
+.recipe-section-title {
+    color: #cbd5e1;
+    font-size: 1rem;
+    font-weight: 600;
+    margin-top: 1rem;
+    margin-bottom: 0.3rem;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+}
+
+.recipe-ingredients-list, .recipe-instructions-text {
+    color: #94a3b8;
+    font-size: 0.95rem;
+    line-height: 1.5;
+    margin: 0 0 1rem 0;
+}
+
+.nutrition-grid {
+    display: flex;
+    gap: 1rem;
+    margin: 1rem 0;
+    flex-wrap: wrap;
+}
+
+.nutrition-badge {
+    background-color: #0f172a;
+    border: 1px solid #334155;
+    border-radius: 8px;
+    padding: 0.5rem 0.9rem;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    min-width: 80px;
+}
+
+.nutrition-label {
+    font-size: 0.75rem;
+    color: #94a3b8;
+    text-transform: uppercase;
+    font-weight: 600;
+}
+
+.nutrition-value {
+    font-size: 0.95rem;
+    color: #f8fafc;
+    font-weight: bold;
+    margin-top: 2px;
+}
+
+.nutrition-value.calories {
+    color: #e67e22;
+}
+
+.nutrition-value.servings {
+    color: #38bdf8;
+}
+
+.comments-wrapper {
+    margin-top: 1.5rem;
+    padding-top: 1.2rem;
+    border-top: 1px solid #334155;
+}
+
+.comments-section {
+    display: none;
+    margin-top: 1rem;
+}
+
+.comments-section.active {
+    display: block;
+}
+
+.comments-list {
+    display: flex;
+    flex-direction: column;
+    gap: 0.8rem;
+    margin-bottom: 1.2rem;
+}
+
+.comment-item {
+    background-color: #0f172a;
+    border: 1px solid #334155;
+    border-radius: 8px;
+    padding: 0.8rem 1rem;
+}
+
+.comment-header {
+    display: flex;
+    justify-content: space-between;
+    font-size: 0.85rem;
+    color: #e67e22;
+    margin-bottom: 0.3rem;
+    font-weight: 600;
+}
+
+.comment-date {
+    color: #64748b;
+    font-weight: normal;
+}
+
+.comment-body {
+    color: #94a3b8;
+    font-size: 0.9rem;
+    margin: 0;
+    line-height: 1.4;
+}
+
+.no-comments-msg {
+    color: #64748b;
+    font-size: 0.9rem;
+    text-align: center;
+    margin: 0;
+}
+
+.recipe-actions {
+    display: flex;
+    gap: 1rem;
+    margin-top: 1.5rem;
+    padding-top: 1rem;
+    border-top: 1px solid #334155;
+    align-items: center;
+}
+
+.btn {
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+    padding: 0.6rem 1.2rem;
+    border-radius: 6px;
+    text-decoration: none;
+    font-weight: 500;
+    font-size: 0.9rem;
+    transition: background-color 0.3s ease;
+    cursor: pointer;
+    border: none;
+}
+
+.btn-details {
+    background-color: #e67e22;
+    color: #ffffff;
+}
+
+.btn-add-main {
+    background-color: #e67e22;
+    color: #ffffff;
+    font-size: 0.95rem;
+    padding: 0.65rem 1.4rem;
+    font-weight: 600;
+    white-space: nowrap;
+}
+
+.btn-add-main:hover {
+    background-color: #d35400;
+}
+
+.btn-update {
+    background-color: #e67e22;
+    color: #ffffff;
+}
+
+.btn-update:hover {
+    background-color: #d35400;
+}
+
+.btn-delete {
+    background-color: #ef4444;
+    color: #ffffff;
+}
+
+.btn-delete:hover {
+    background-color: #dc2626;
+}
+
+.btn-toggle-comments {
+    background-color: #334155;
+    color: #cbd5e1;
+}
+
+.btn-toggle-comments:hover {
+    background-color: #475569;
+    color: #ffffff;
+}
+
+.no-recipes-msg h2 {
+    text-align: center;
+    color: #64748b;
+    margin-top: 2rem;
+}
+
+@media (max-width: 768px) {
+    .recipe-cards {
+        flex-direction: column;
+    }
+    .recipe-cards img {
+        width: 100%;
+        height: 200px;
+        border-right: none;
+        border-bottom: 1px solid #334155;
+    }
+    .header-controls {
+        flex-direction: column;
+        align-items: stretch;
+    }
+    .search-form {
+        width: 100%;
+    }
+    .recipe-actions {
+        flex-direction: column;
+        align-items: stretch;
+    }
+}
+
+/* --- Инстаграм стил за формата за коментари --- */
+.comment-form {
+    display: flex;
+    gap: 0.5rem;
+    margin-top: 1rem;
+    align-items: center;
+}
+
+.comment-input {
+    flex: 1;
+    background-color: #0f172a;
+    border: 1px solid #334155;
+    border-radius: 6px;
+    padding: 0.6rem 0.9rem;
+    color: #f8fafc;
+    font-size: 0.9rem;
+    outline: none;
+    transition: border-color 0.3s ease;
+}
+
+.comment-input:focus {
+    border-color: #e67e22;
+}
+
+.comment-input::placeholder {
+    color: #64748b;
+}
+
+.btn-comment {
+    background-color: #334155;
+    color: #e67e22;
+    font-weight: 600;
+    padding: 0.6rem 1rem;
+    border-radius: 6px;
+    border: none;
+    cursor: pointer;
+    transition: background-color 0.3s ease, color 0.3s ease;
+}
+
+.btn-comment:hover {
+    background-color: #e67e22;
+    color: #ffffff;
+}
+
+.delete-comment-button {
+    background: transparent;
+    border: none;
+    color: #64748b; /* Дискретен цвят в покой (сиво-син, същия като датите ти) */
+    font-size: 0.9rem;
+    cursor: pointer;
+    padding: 4px;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    transition: color 0.3s ease, transform 0.2s ease;
+}
+
+.delete-comment-button:hover {
+    color: #ef4444; /* Светва в червено при минаване с мишката */
+    transform: scale(1.1); /* Леко се разтваря/увеличава за разкош */
+}
+
+.form-card-container {
+    background-color: #1e293b; /* Същия цвят като навигацията и футъра ти */
+    border: 1px solid #334155;
+    border-radius: 16px; /* Заоблени краища */
+    padding: 2.5rem;
+    box-shadow: 0 10px 25px -5px rgba(0, 0, 0, 0.3);
+    width: 100%;
+    box-sizing: border-box;
+}
+
+/* Групиране на полетата */
+.form-group {
+    margin-bottom: 1.25rem;
+    display: flex;
+    flex-direction: column;
+}
+
+/* Етикети (Labels) */
+.form-card-container label {
+    color: #f8fafc !important;
+    font-weight: 600;
+    margin-bottom: 0.5rem;
+    font-size: 0.95rem;
+}
+
+/* Всички полета за въвеждане, текст и падащи менюта */
+.form-card-container input[type="text"],
+.form-card-container input[type="number"],
+.form-card-container input[type="url"],
+.form-card-container textarea,
+.form-card-container select {
+    width: 100% !important;
+    background-color: #0f172a !important; /* По-тъмен фон за контраст вътре в картата */
+    border: 1px solid #334155 !important;
+    border-radius: 10px !important; /* Заоблени полета */
+    padding: 0.75rem 1rem !important;
+    color: #f8fafc !important;
+    font-size: 0.95rem !important;
+    outline: none !important;
+    box-sizing: border-box !important;
+    transition: border-color 0.3s ease, box-shadow 0.3s ease;
+}
+
+/* Множественият избор за съставки (ManyToManyField select multiple) */
+.form-card-container select[multiple] {
+    height: 140px;
+    padding: 0.5rem !important;
+}
+
+/* Ефект при клик върху поле (фокус с твоя оранжев цвят) */
+.form-card-container input:focus,
+.form-card-container textarea:focus,
+.form-card-container select:focus {
+    border-color: #e67e22 !important;
+    box-shadow: 0 0 0 3px rgba(230, 126, 34, 0.15);
+}
+
+/* Текст за предупреждение при изтриване */
+.form-warning-text {
+    color: #cbd5e1 !important;
+    font-weight: 600;
+    font-size: 1.05rem;
+    margin: 1.5rem 0 1rem 0;
+}
+
+/* Поле за грешки */
+.errorlist {
+    color: #ef4444;
+    list-style: none;
+    padding: 0;
+    margin: 0.3rem 0 0 0;
+    font-size: 0.85rem;
+}
+
+.pagination {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin: 40px 0 20px 0;
+    width: 100%;
+}
+
+.step-links {
+    display: flex;
+    align-items: center;
+    gap: 10px; /* Разстояние между бутоните и текста */
+    background-color: #1e293b; /* Същият тъмен цвят като навигацията и футъра ти */
+    padding: 10px 20px;
+    border-radius: 14px; /* Заоблени краища */
+    border: 1px solid #334155;
+    box-shadow: 0 10px 25px rgba(0, 0, 0, 0.25);
+}
+
+/* Бутоните със стрелките */
+.page-btn {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    width: 38px;
+    height: 38px;
+    background-color: #0f172a; /* По-тъмен фон за самите бутони */
+    color: #e2e8f0;
+    border: 1px solid #334155;
+    border-radius: 10px; /* Заоблени бутони */
+    text-decoration: none;
+    font-size: 0.9rem;
+    transition: all 0.25s ease;
+}
+
+/* Ховър ефект (при минаване с мишката - светва в твоя оранжев акцент) */
+.page-btn:hover {
+    background-color: #e67e22; /* Оранжевият цвят от сайта ти */
+    color: #ffffff;
+    border-color: #e67e22;
+    transform: translateY(-2px); /* Леко повдигане */
+    box-shadow: 0 4px 10px rgba(230, 126, 34, 0.3);
+}
+
+/* Ефект при клик */
+.page-btn:active {
+    transform: translateY(0);
+}
+
+/* Текстът "Страница X от Y" */
+.page-info {
+    color: #94a3b8; /* Меко сиво, за да се чете лесно */
+    font-size: 0.95rem;
+    font-weight: 500;
+    padding: 0 12px;
+    letter-spacing: 0.3px;
+    white-space: nowrap;
+}
+

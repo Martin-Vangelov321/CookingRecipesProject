@@ -1,0 +1,140 @@
+{% extends 'shared/base.html' %}
+
+{% block content %}
+
+        <div class="recipes-full-list">
+            <div class="recipe-cards">
+                <img src=" {{ recipe.dish_photo }}" alt="">
+
+                <div class="recipe-details">
+                    <div class="recipe-header-info">
+                        <h3>{{ recipe.recipe_name }}</h3>
+
+                        <div class="recipe-chef">
+                            {% if recipe.chef %}
+                                <i class="fa-solid fa-user-tie"></i> Chef: {{ recipe.chef.full_name}}
+                            {% else %}
+                                <i class="fa-solid fa-user-tie"></i> Chef: Anonymous Chef
+                            {% endif %}
+                        </div>
+                        <div class="recipe-section-title">
+                            Ingredients:
+                        </div>
+                        <p class="recipe-ingredients-list">
+                            {% for ingredient in recipe.recipe_ingredients.all %}
+                                {{ ingredient.ingredient_name }}{% if not forloop.last %}, {% endif %}
+                            {% endfor %}
+                        </p>
+
+                        <div class="recipe-section-title">Nutrition & Portions:</div>
+                        <div class="nutrition-grid">
+                            <div class="nutrition-badge">
+                                <span class="nutrition-label">Portions</span>
+                                <span class="nutrition-value servings">{{ recipe.servings }}</span>
+                            </div>
+                            <div class="nutrition-badge">
+                                <span class="nutrition-label">Calories</span>
+                                <span class="nutrition-value calories">{{ recipe.recipe_total_calories }} kcal</span>
+                            </div>
+                            <div class="nutrition-badge">
+                                <span class="nutrition-label">Protein</span>
+                                <span class="nutrition-value">{{ recipe.recipe_total_protein }}g</span>
+                            </div>
+                            <div class="nutrition-badge">
+                                <span class="nutrition-label">Fats</span>
+                                <span class="nutrition-value">{{ recipe.recipe_total_fats }}g</span>
+                            </div>
+                            <div class="nutrition-badge">
+                                <span class="nutrition-label">Carbs</span>
+                                <span class="nutrition-value">{{ recipe.recipe_total_carbohydrates }}g</span>
+                            </div>
+                        </div>
+
+                        <div class="recipe-section-title">Instructions:</div>
+                            <p class="recipe-instructions-text clamped">{{ recipe.instructions }}</p>
+                            <button type="button" class="btn-read-more" onclick="toggleInstructions(this)">
+                                Read more <i class="fa-solid fa-chevron-down"></i>
+                            </button>
+                        </div>
+
+                    <div class="comments-wrapper">
+                        <button type="button" class="btn btn-toggle-comments" onclick="toggleComments(this)">
+                            <i class="fa-solid fa-comments"></i> Toggle Comments ({{ recipe.comments.count }})
+                        </button>
+
+                        <div class="comments-section">
+                            <div class="comments-list">
+                                {% for comment in recipe.comments.all %}
+                                    <div class="comment-item">
+                                        <div class="comment-header">
+                                            <span>Martin Vangelov</span>
+                                            <span class="comment-date">{{ comment.date_and_time|date:"d M Y, H:i" }}</span>
+
+                                            <form action="{% url 'common:delete_comment' comment.pk %}" method="post">
+                                                {% csrf_token %}
+                                                <button type="submit" class="delete-comment-button">
+                                                    <i class="fa-solid fa-trash-can"></i>
+                                                </button>
+                                            </form>
+
+
+                                        </div>
+                                        <p class="comment-body">{{ comment.text }}</p>
+                                    </div>
+                                {% empty %}
+                                    <p class="no-comments-msg">No comments yet.</p>
+                                {% endfor %}
+
+                            </div>
+
+                            <form action="{% url 'common:add_comment' recipe.pk %}" method="post" class="comment-form">
+                                {% csrf_token %}
+                                <input
+                                    type="text"
+                                    name="text"
+                                    class="comment-input"
+                                    placeholder="Add a comment..."
+                                    maxlength="400"
+                                >
+                                <button type="submit" class="btn btn-comment">
+                                    Post
+                                </button>
+                            </form>
+
+                        </div>
+                    </div>
+
+                    <div class="recipe-actions">
+                        <a href="{% url 'recipes:update' recipe.slug %}" class="btn btn-update"><i class="fa-solid fa-pen-to-square"></i> Update</a>
+                        <a href="{% url 'recipes:delete' recipe.slug %}" class="btn btn-delete"><i class="fa-solid fa-trash-can"></i> Delete</a>
+
+                    </div>
+                </div>
+            <a href="{% url 'recipes:details' %}" class="btn btn-update">Back</a>
+            </div>
+
+    </div>
+
+        <script>
+        function toggleComments(button) {
+            const wrapper = button.closest('.comments-wrapper');
+            const section = wrapper.querySelector('.comments-section');
+            section.classList.toggle('active');
+        }
+
+        function toggleInstructions(button) {
+            const textElement = button.previousElementSibling;
+            textElement.classList.toggle('clamped');
+            button.classList.toggle('expanded');
+
+            if (textElement.classList.contains('clamped')) {
+                button.innerHTML = 'Read more <i class="fa-solid fa-chevron-down"></i>';
+            } else {
+                button.innerHTML = 'Read less <i class="fa-solid fa-chevron-down"></i>';
+            }
+        }
+
+    </script>
+
+
+{% endblock %}

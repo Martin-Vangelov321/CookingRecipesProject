@@ -1,0 +1,30 @@
+{% extends 'shared/base.html' %}
+{% load static %}
+
+
+{% block content %}
+
+    <h2 class="home-title">Recently Added Recipes</h2>
+
+    <div class="recipe-grid">
+        {% for recipe in  last_recipes %}
+            <div class="recipe-card">
+                
+                <img src="{{ recipe.dish_photo }}" alt="{{ recipe.recipe_name }}">
+
+                <div class="recipe-info">
+                    <h3>{{ recipe.recipe_name }}</h3>
+                    <p>{{ recipe.instructions|truncatechars:80 }}</p>
+
+                    <a href="{% url 'recipes:details-single' recipe.slug %}" class="recipe-btn">Recipe Details</a>
+                </div>
+            </div>
+        {% empty %}
+            <h1 class="no-recipes">No Added Recipes Yet</h1>
+        {% endfor %}
+    </div>
+
+
+
+{% endblock %}
+

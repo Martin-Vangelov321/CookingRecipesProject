@@ -9,13 +9,15 @@ class ChefBaseForm(forms.ModelForm):
 
     class Meta:
         model = Chef
-        exclude = ['slug']
+        exclude = ['slug', 'created_at']
 
 
         labels = {
             'first_name': 'Chef first name',
             'last_name': 'Chef last name',
             'is_head_chef': 'Head chef',
+            'country': 'Chef country',
+            'bio': 'Chef biography',
         }
 
 
@@ -24,6 +26,7 @@ class ChefBaseForm(forms.ModelForm):
             'last_name': forms.TextInput(attrs={'placeholder': 'Enter Chef Last Name'}),
             'bio': forms.Textarea(attrs={'placeholder': 'Enter Chef Bio', 'rows': 10}),
             'birth_year': forms.NumberInput(attrs={'placeholder': 'Enter Chef Birth Year'}),
+            'specialty': forms.TextInput(attrs={'placeholder': 'Enter Chef Specialty'}),
         }
 
         error_messages = {

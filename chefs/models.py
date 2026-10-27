@@ -24,7 +24,8 @@ class Chef(models.Model):
     birth_year = models.PositiveIntegerField()
     is_head_chef = models.BooleanField(default=False)
     slug = models.SlugField(unique=True, editable=False, blank=True, null=False)
-
+    specialty = models.CharField(max_length=30)
+    created_at = models.DateTimeField(auto_now_add=True)
 
     @property
     def age(self):

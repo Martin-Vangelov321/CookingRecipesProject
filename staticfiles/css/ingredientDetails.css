@@ -1,0 +1,220 @@
+/* --- ГРИД/ФЛЕКС ПОДРЕДБА НА КАРТИТЕ (73% ширина и центрирано) --- */
+.ingredients-grid {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 1.5rem;
+    width: 73%;
+    margin: 2rem auto;
+    box-sizing: border-box;
+}
+
+/* --- ИНДИВИДУАЛНА КАРТА --- */
+.ingredient-card {
+    background-color: #1e293b;
+    border: 1px solid #334155;
+    border-radius: 12px;
+    padding: 1.8rem;
+    box-shadow: 0 10px 20px -5px rgba(0, 0, 0, 0.15);
+    box-sizing: border-box;
+    transition: border-color 0.3s ease, transform 0.2s ease;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    flex: 1 1 300px;
+    max-width: 380px;
+}
+
+.ingredient-card:hover {
+    border-color: #e67e22;
+    transform: translateY(-3px);
+}
+
+/* ЗАГЛАВИЕ НА КАРТАТА И КАТЕГОРИЯ */
+.ingredient-card .ingredient-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 1.2rem;
+    border-bottom: 1px solid #334155;
+    padding-bottom: 0.8rem;
+}
+
+.ingredient-card .ingredient-title {
+    color: #f8fafc;
+    font-size: 1.3rem;
+    font-weight: 700;
+    margin: 0;
+}
+
+.ingredient-card .category-badge {
+    background-color: #0f172a;
+    color: #38bdf8;
+    border: 1px solid #334155;
+    padding: 0.3rem 0.7rem;
+    border-radius: 6px;
+    font-size: 0.75rem;
+    font-weight: 600;
+    text-transform: uppercase;
+}
+
+/* QUANTITY И TOTAL CALORIES НА ЕДИН РЕД */
+.ingredient-card .ingredient-info {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 0.8rem;
+    margin-bottom: 1.2rem;
+    width: 100%;
+}
+
+.ingredient-card .info-box {
+    background-color: #0f172a;
+    border: 1px solid #334155;
+    border-radius: 8px;
+    padding: 0.7rem 0.9rem;
+    display: flex;
+    flex-direction: column;
+}
+
+.ingredient-card .info-label {
+    font-size: 0.75rem;
+    color: #94a3b8;
+    text-transform: uppercase;
+    font-weight: 600;
+    margin-bottom: 3px;
+}
+
+.ingredient-card .info-value {
+    font-size: 0.95rem;
+    color: #f8fafc;
+    font-weight: bold;
+}
+
+.ingredient-card .info-value.calories {
+    color: #e67e22;
+}
+
+/* ЗАГЛАВИЕ TOTAL MACROS */
+.ingredient-card .macros-section-title {
+    color: #cbd5e1;
+    font-size: 0.85rem;
+    font-weight: 600;
+    margin-bottom: 0.5rem;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+}
+
+/* КУТИЙКИ ЗА МАКРОСИТЕ (ТРИТЕ НА ЕДИН РЕД) */
+.ingredient-card .nutrition-grid {
+    display: flex;
+    flex-direction: row;
+    gap: 0.6rem;
+    margin-bottom: 1.2rem;
+    width: 100%;
+}
+
+.ingredient-card .nutrition-badge {
+    background-color: #0f172a;
+    border: 1px solid #334155;
+    border-radius: 8px;
+    padding: 0.5rem 0.4rem;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    flex: 1;
+    min-width: 0;
+}
+
+.ingredient-card .nutrition-label {
+    font-size: 0.65rem;
+    color: #94a3b8;
+    text-transform: uppercase;
+    font-weight: 600;
+}
+
+.ingredient-card .nutrition-value {
+    font-size: 0.85rem;
+    color: #f8fafc;
+    font-weight: bold;
+    margin-top: 2px;
+}
+
+/* ВЕГАН И БЕЗ ГЛУТЕН (В ЛЯВО) */
+.ingredient-card .dietary-tags {
+    display: flex;
+    justify-content: flex-start;
+    gap: 8px;
+    margin-bottom: 1.2rem;
+    flex-wrap: wrap;
+    width: 100%;
+}
+
+.ingredient-card .dietary-badge {
+    font-size: 0.75rem;
+    padding: 0.3rem 0.7rem;
+    border-radius: 6px;
+    font-weight: 600;
+}
+
+.ingredient-card .dietary-badge.active {
+    background-color: rgba(34, 197, 94, 0.15);
+    color: #22c55e;
+    border: 1px solid rgba(34, 197, 94, 0.3);
+}
+
+.ingredient-card .dietary-badge.inactive {
+    background-color: rgba(239, 68, 68, 0.15);
+    color: #ef4444;
+    border: 1px solid rgba(239, 68, 68, 0.3);
+}
+
+/* БУТОНИ ЗА ДЕЙСТВИЕ НАЙ-ДОЛУ */
+.ingredient-card .ingredient-actions {
+    display: flex;
+    gap: 0.8rem;
+    padding-top: 1rem;
+    border-top: 1px solid #334155;
+    margin-top: auto;
+    width: 100%;
+    box-sizing: border-box;
+}
+
+.ingredient-card .btn {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    padding: 0.5rem 1rem;
+    border-radius: 6px;
+    text-decoration: none;
+    font-weight: 500;
+    font-size: 0.85rem;
+    cursor: pointer;
+    border: none;
+    flex: 1;
+    transition: background-color 0.3s ease;
+}
+
+.ingredient-card .btn-update {
+    background-color: #e67e22;
+    color: #ffffff;
+}
+
+.ingredient-card .btn-update:hover {
+    background-color: #d35400;
+}
+
+.ingredient-card .btn-delete {
+    background-color: #ef4444;
+    color: #ffffff;
+}
+
+.ingredient-card .btn-delete:hover {
+    background-color: #dc2626;
+}
+
+/* МОБИЛНА АДАПТИВНОСТ */
+@media (max-width: 768px) {
+    .ingredients-grid {
+        width: 90%;
+    }
+}

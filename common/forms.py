@@ -11,5 +11,3 @@ class CommentForm(forms.ModelForm):
             'text': forms.Textarea(attrs={'placeholder': 'Add a comment...'}),
         }
 
-
-# todo add a shearch form

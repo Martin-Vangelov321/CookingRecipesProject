@@ -1,0 +1,92 @@
+{% extends 'shared/base.html' %}
+{% load static %}
+
+{% block content %}
+
+        <div class="chef-card-container-single">
+
+            <div class="chef-full-card-single">
+
+                <div class="chef-header-info">
+                    <div class="chef-info">
+                        <h3>{{ chef.full_name }}</h3>
+                        {% if chef.is_head_chef %}
+                            <span class="head-chef-badge"><i class="fa-solid fa-star"></i> Head Chef</span>
+                        {% endif %}
+                    </div>
+                    <div class="chef-birth-year">
+                        Birth Year: {{ chef.birth_year }}
+                    </div>
+                </div>
+
+                <div class="chef-meta-grid">
+                    <div class="meta-box">
+                        <span class="meta-title">Specialty:</span>
+                        <span class="meta-content"><i class="fa-solid fa-utensils"></i> {{ chef.specialty }}</span>
+                    </div>
+                    <div class="meta-box">
+                        <span class="meta-title">Country: </span>
+                        <span class="meta-content"><i class="fa-solid fa-globe"></i> {{ chef.country }}</span>
+                    </div>
+                    <div class="meta-box">
+                        <span class="meta-title">Age: </span>
+                        <span class="meta-content"><i class="fa-solid fa-cake-candles"></i> {{ chef.age }}</span>
+                    </div>
+                </div>
+
+
+                <div class="chef-bio-box">
+                    <div class="bio-title">Biography</div>
+                    {% if chef.bio %}
+                        <p class="bio-text clamped">{{ chef.bio }}</p>
+                        <button type="button" class="btn-read-more" onclick="toggleChefBio(this)">
+                            See more <i class="fa-solid fa-chevron-down"></i>
+                        </button>
+                    {% else %}
+                        <p class="bio-text" style="max-height: none;">No biography available for this chef.</p>
+                    {% endif %}
+                </div>
+
+
+
+                <div class="chef-recipes-box">
+                    <h4>Chef Recipes</h4>
+                    <ul class="recipes-mini-list">
+                        {% for recipe in chef_recipes %}
+                            <li class="recipe-mini-item">
+                                <a><i class="fa-solid fa-bowl-food"></i> {{ recipe.recipe_name }} </a>
+                                <a href="{% url 'recipes:details-single' recipe.slug %}" class="btn btn-details"><i class="fa-solid fa-eye"></i> Details</a>
+                            </li>
+                        {% empty %}
+                            <li class="recipe-mini-item chef-no-recipes">
+                                No chefs added yet.
+                            </li>
+                        {% endfor %}
+                    </ul>
+                </div>
+
+                <div class="chef-actions">
+                    <a href="{% url 'chefs:update' chef.slug %}" class="btn btn-update"><i class="fa-solid fa-pen-to-square"></i> Update</a>
+                    <a href="{% url 'chefs:delete' chef.slug %}" class="btn btn-delete"><i class="fa-solid fa-trash-can"></i> Delete</a>
+                </div>
+
+
+            </div>
+            <a href="{% url 'chefs:details' %}" class="btn btn-toggle-comments">Back</a>
+        </div>
+        <script>
+            function toggleChefBio(button) {
+                const bioText = button.previousElementSibling;
+
+                bioText.classList.toggle('clamped');
+                button.classList.toggle('expanded');
+
+                if (bioText.classList.contains('clamped')) {
+                    button.innerHTML = 'See more <i class="fa-solid fa-chevron-down"></i>';
+                } else {
+                    button.innerHTML = 'See less <i class="fa-solid fa-chevron-down"></i>';
+                }
+            }
+        </script>
+
+{% endblock %}

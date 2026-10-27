@@ -12,9 +12,11 @@ class RecipeBaseForm(forms.ModelForm):
         widgets = {
             'recipe_name': forms.TextInput(attrs={'placeholder': 'Enter recipe name'}),
             'dish_photo': forms.URLInput(attrs={'placeholder': 'Link to dish photo'}),
-            'instructions': forms.Textarea(attrs={'placeholder': 'Enter instructions'}), #row set?
+            'instructions': forms.Textarea(attrs={'placeholder': 'Enter instructions', 'rows' : 10}),
             'prepare_time_in_minutes': forms.NumberInput(attrs={'placeholder': 'Enter preparation time'}),
             'servings': forms.NumberInput(attrs={'placeholder': 'Enter servings'}),
+            'recipe_ingredients': forms.CheckboxSelectMultiple(),
+
         }
 
         error_messages = {
@@ -29,9 +31,17 @@ class RecipeBaseForm(forms.ModelForm):
             },
             'prepare_time_in_minutes': {
                 'required': 'This field cannot be empty',
+                'min_value': 'Preparation time cannot be zero or less'
             },
             'servings': {
                 'required': 'This field cannot be empty',
+                'min_value': 'Servings cannot be zero or less'
+            },
+            'recipe_ingredients': {
+                'required': 'Chose or create ingredients',
+            },
+            'chef': {
+                'required': 'Chose or create chef',
             }
         }
 

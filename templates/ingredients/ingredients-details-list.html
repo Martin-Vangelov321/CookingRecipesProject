@@ -1,0 +1,95 @@
+{% extends 'shared/base.html' %}
+{% load static %}
+
+{% block content %}
+
+    <div class="page-header">
+        <h2 class="page-title">All Ingredients Management</h2>
+
+        <div class="header-controls">
+            <form class="search-form" method="get" action="">
+                <input
+                        type="text"
+                        name="q"
+                        class="search-input"
+                        placeholder="Search chef..."
+                        value="{{ request.GET.q|default:'' }}"
+                    >
+                    <button type="submit" class="search-btn">
+                        <i class="fa-solid fa-magnifying-glass"></i>
+                    </button>
+            </form>
+
+            <a href="{% url 'ingredients:create' %}" class="btn btn-add-main">
+                <i class="fa-solid fa-plus"></i> Add New Ingredient
+            </a>
+        </div>
+    </div>
+
+    <div class="ingredients-grid">
+        {% for ingredient in ingredients %}
+            <div class="ingredient-card">
+                <div class="ingredient-header">
+                    <h3 class="ingredient-title">{{ ingredient.ingredient_name }}</h3>
+                    <span class="category-badge">{{ ingredient.category }}</span>
+                </div>
+
+
+                <div class="ingredient-info">
+                    <div class="info-box">
+                        <span class="info-label">Quantity</span>
+                        <span class="info-value">{{ ingredient.grams }}g</span>
+                    </div>
+                    <div class="info-box">
+                        <span class="info-label">Total Calories</span>
+                        <span class="info-value calories">{{ ingredient.total_calories }}</span>
+                    </div>
+                </div>
+
+                <div class="macros-section-title">Total Macros</div>
+
+                <div class="nutrition-grid">
+                    <div class="nutrition-badge">
+                        <span class="nutrition-label">Protein</span>
+                        <span class="nutrition-value">{{ ingredient.total_protein }}g</span>
+                    </div>
+                    <div class="nutrition-badge">
+                        <span class="nutrition-label">Carbs</span>
+                        <span class="nutrition-value">{{ ingredient.total_carbohydrates }}g</span>
+                    </div>
+                    <div class="nutrition-badge">
+                        <span class="nutrition-label">Fats</span>
+                        <span class="nutrition-value">{{ ingredient.total_fats }}g</span>
+                    </div>
+                </div>
+
+                <div class="dietary-tags">
+
+                    {% if ingredient.is_vegan %}
+                        <span class="dietary-badge active">Vegan</span>
+                    {% else %}
+                        <span class="dietary-badge inactive">Vegan</span>
+                    {% endif %}
+                    {% if ingredient.is_gluten_free %}
+                        <span class="dietary-badge active">Gluten-Free</span>
+                    {% else %}
+                        <span class="dietary-badge inactive">Gluten-Free</span>
+                    {% endif %}
+                </div>
+
+                <div class="ingredient-actions">
+                    <a href="{% url 'ingredients:update' ingredient.pk %}" class="btn btn-update">Update</a>
+                    <a href="{% url 'ingredients:delete' ingredient.pk %}" class="btn btn-delete">Delete</a>
+                </div>
+            </div>
+
+        {% empty %}
+            <div class="no-ingredients-msg">
+                <h2>No Added Ingredients Yet</h2>
+            </div>
+        {% endfor %}
+    </div>
+
+    {% include 'shared/paginator.html' %}
+
+{% endblock %}
