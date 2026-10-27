@@ -15,7 +15,7 @@ class ChefsDetailsListView(ListView):
     )
 
     context_object_name = 'chefs'
-    paginate_by = 5
+    paginate_by = 3
     template_name = 'chefs/chefs-details-list.html'
 
     def get_queryset(self) -> QuerySet:
