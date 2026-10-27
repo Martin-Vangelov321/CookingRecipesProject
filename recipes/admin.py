@@ -10,29 +10,3 @@ class RecipeAdmin(admin.ModelAdmin):
         'prepare_time_in_minutes', 'recipe_ingredients__ingredient_name'
     ]
     list_filter = ['servings', 'chef']
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-

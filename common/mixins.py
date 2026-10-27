@@ -5,27 +5,3 @@ class DisableFormMixin:
         for field in self.fields.values():
             field.widget.attrs['disabled'] = True
             field.widget.attrs['readonly'] = True
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
